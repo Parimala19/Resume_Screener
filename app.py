@@ -6,7 +6,7 @@ import re
 
 st.set_page_config(page_title="AI Resume Screener", layout="centered")
 
-# 💄 Custom CSS
+# Custom CSS
 st.markdown("""
     <style>
     .stApp {
@@ -31,7 +31,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ✅ Start card wrapper
+# Start card wrapper
 with st.container():
     st.markdown("""
         <div class="card">
@@ -42,7 +42,7 @@ with st.container():
 
 
 
-    # 🎯 Model selection
+    # Model selection
     genai.configure(api_key="AIzaSyDgfhEgHaeoq59HufC5L7fm4HFbrkg2jKo")  # Replace with your key
 
     @st.cache_data
@@ -118,13 +118,13 @@ Resume:
 
             st.success("✅ Resume analyzed successfully!")
 
-            # 🧾 Display nicely
-            st.markdown("### 📋 Resume Review Output")
+            # Display nicely
+            st.markdown("Resume Review Output")
             for section in analysis_result.split("\n\n"):
                 st.markdown(section.strip())
                 st.markdown(" ")
 
-            # 📥 TXT Download
+            # TXT Download
             with tempfile.NamedTemporaryFile(delete=False, suffix=".txt") as temp_file:
                 temp_file.write(analysis_result.encode("utf-8"))
                 temp_file_path = temp_file.name
@@ -143,5 +143,5 @@ Resume:
     else:
         st.info("📝 Please upload your resume in PDF format.")
 
-    # ✅ End card div
+    #End card div
     st.markdown("</div>", unsafe_allow_html=True)
