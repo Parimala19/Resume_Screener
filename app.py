@@ -5,41 +5,47 @@ from PyPDF2 import PdfReader
 import google.generativeai as genai
 import re
 
-# Streamlit Config
-st.set_page_config(page_title="AI Resume Screener", layout="centered")
+st.set_page_config(page_title="Resume Screener", layout="wide")
 
-# Inject custom CSS for UI polishing
+# 💡 Add custom CSS and start the wrapper div
 st.markdown("""
     <style>
-    .main {
-        background-color: #f8f9fa;
-        padding: 2rem;
-        border-radius: 12px;
-    }
     .stApp {
-        background: linear-gradient(to right, #f0f2f5, #ffffff);
+        background: linear-gradient(to bottom right, #e8f0ff, #ffffff);
+        font-family: 'Segoe UI', sans-serif;
     }
-    h1 {
-        color: #333333;
+    .main-card {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 20px;
     }
     .stTextInput, .stSelectbox, .stFileUploader {
-        border-radius: 8px !important;
+        border-radius: 10px !important;
+        padding: 0.5rem;
     }
     .stButton > button {
         background-color: #4CAF50;
         color: white;
-        border-radius: 8px;
         font-weight: bold;
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
     }
     .stDownloadButton > button {
-        background-color: #2196F3;
+        background-color: #1E88E5;
         color: white;
-        border-radius: 8px;
         font-weight: bold;
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
+    }
+    h1 {
+        color: #333333;
+        text-align: center;
     }
     </style>
+    <div class="main-card">
 """, unsafe_allow_html=True)
-
 
 
 # Replace with your actual Gemini API key
