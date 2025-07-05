@@ -5,43 +5,33 @@ from PyPDF2 import PdfReader
 import google.generativeai as genai
 import re
 
-st.set_page_config(page_title="Resume Screener", layout="wide")
+st.set_page_config(page_title="AI Resume Screener", layout="centered")
 
-# 💡 Add custom CSS and start the wrapper div
+# 💄 Custom CSS styling
 st.markdown("""
     <style>
     .stApp {
-        background: linear-gradient(to bottom right, #e8f0ff, #ffffff);
+        background: linear-gradient(to bottom right, #ddeeff, #ffffff);
         font-family: 'Segoe UI', sans-serif;
     }
     .main-card {
         background-color: #ffffff;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        margin-top: 20px;
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
     }
-    .stTextInput, .stSelectbox, .stFileUploader {
-        border-radius: 10px !important;
-        padding: 0.5rem;
-    }
-    .stButton > button {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-        border-radius: 8px;
-        padding: 0.6rem 1rem;
-    }
-    .stDownloadButton > button {
-        background-color: #1E88E5;
-        color: white;
-        font-weight: bold;
-        border-radius: 8px;
-        padding: 0.6rem 1rem;
-    }
-    h1 {
+    h1, h3 {
         color: #333333;
         text-align: center;
+        margin-bottom: 1rem;
+    }
+    .stButton > button, .stDownloadButton > button {
+        background-color: #2f80ed;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 0.6rem 1.2rem;
     }
     </style>
     <div class="main-card">
