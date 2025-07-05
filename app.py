@@ -35,8 +35,12 @@ st.markdown("""
 with st.container():
     st.markdown('<div class="card">', unsafe_allow_html=True)
 
+    # 🎯 Title and description now INSIDE the white card
     st.markdown("<h2 style='text-align:center;'>AI Resume Screener</h2>", unsafe_allow_html=True)
     st.markdown("Upload your PDF resume, choose a Gemini model, and get AI-powered resume feedback and score.")
+
+    st.markdown("</div>", unsafe_allow_html=True) 
+
 
     # 🎯 Model selection
     genai.configure(api_key="AIzaSyDgfhEgHaeoq59HufC5L7fm4HFbrkg2jKo")  # Replace with your key
