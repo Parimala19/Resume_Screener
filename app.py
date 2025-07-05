@@ -7,36 +7,37 @@ import re
 
 st.set_page_config(page_title="AI Resume Screener", layout="centered")
 
-# 💄 Custom CSS styling
+# 💄 Custom CSS for background and card
 st.markdown("""
     <style>
     .stApp {
         background: linear-gradient(to bottom right, #ddeeff, #ffffff);
         font-family: 'Segoe UI', sans-serif;
     }
-    .main-card {
-        background-color: #ffffff;
+    .card {
+        background-color: white;
         padding: 2.5rem;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         margin-top: 30px;
     }
-    h1, h3 {
-        color: #333333;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
     .stButton > button, .stDownloadButton > button {
-        background-color: #2f80ed;
+        background-color: #4CAF50;
         color: white;
         font-weight: bold;
-        border-radius: 8px;
-        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        padding: 0.5rem 1rem;
     }
     </style>
-    <div class="main-card">
 """, unsafe_allow_html=True)
 
+# ✅ Use container so everything stays inside the card
+with st.container():
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+
+    # 🎯 Title and description INSIDE the card
+    st.markdown("<h2 style='text-align:center;'>AI Resume Screener</h2>", unsafe_allow_html=True)
+    st.markdown("Upload your PDF resume, choose a Gemini model, and get AI-powered resume feedback and score.")
 
 # Replace with your actual Gemini API key
 genai.configure(api_key="AIzaSyDgfhEgHaeoq59HufC5L7fm4HFbrkg2jKo")
