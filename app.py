@@ -1,3 +1,10 @@
+
+import streamlit as st
+import tempfile
+from PyPDF2 import PdfReader
+import google.generativeai as genai
+import re
+
 # Streamlit Config
 st.set_page_config(page_title="AI Resume Screener", layout="centered")
 
@@ -33,11 +40,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-import streamlit as st
-import tempfile
-from PyPDF2 import PdfReader
-import google.generativeai as genai
-import re
+
 
 # Replace with your actual Gemini API key
 genai.configure(api_key="AIzaSyDgfhEgHaeoq59HufC5L7fm4HFbrkg2jKo")
