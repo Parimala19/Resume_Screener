@@ -50,7 +50,7 @@ with st.container():
     selected_model = st.selectbox("Select Gemini Model", model_list, index=model_list.index("models/gemini-1.5-flash"))
 
     uploaded_file = st.file_uploader("📄 Upload Resume PDF", type=["pdf"])
-    st.caption("📝 Please upload your resume in PDF format.")
+    
 
     def extract_text_from_pdf(uploaded_file):
         reader = PdfReader(uploaded_file)
