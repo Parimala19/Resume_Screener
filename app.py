@@ -98,7 +98,7 @@ Breakdown by:
 - Internship/Experience (out of 20)  
 - Structure & Clarity (out of 20)  
 - Keyword Optimization (out of 20)  
-
+- a total of 100
 Also provide a one-line explanation for each sub-score based on the resume text.
 
 Resume:
