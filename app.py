@@ -149,3 +149,4 @@ if uploaded_file is not None:
         st.error(f"❌ Error: {str(e)}")
 else:
     st.info("📝 Please upload your resume in PDF format.")
+st.markdown("</div>", unsafe_allow_html=True)
