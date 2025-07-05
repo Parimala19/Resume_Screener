@@ -1,4 +1,3 @@
-
 # Streamlit Config
 st.set_page_config(page_title="AI Resume Screener", layout="centered")
 
@@ -43,7 +42,6 @@ import re
 # Replace with your actual Gemini API key
 genai.configure(api_key="AIzaSyDgfhEgHaeoq59HufC5L7fm4HFbrkg2jKo")
 
-
 # Fetch supported models
 @st.cache_data
 def get_supported_models():
@@ -51,7 +49,7 @@ def get_supported_models():
     return [m.name for m in models if 'generateContent' in m.supported_generation_methods]
 
 model_list = get_supported_models()
-selected_model = st.selectbox("🎯 Select Gemini Model", model_list, index=model_list.index("models/gemini-1.5-flash"))
+selected_model = st.selectbox("Select Gemini Model", model_list, index=model_list.index("models/gemini-1.5-flash"))
 
 # Clean up asterisks or markdown
 def clean_output(text):
@@ -108,9 +106,8 @@ def extract_text_from_pdf(uploaded_file):
         text += page.extract_text() + "\n"
     return text
 
-# Streamlit UI
-st.set_page_config(page_title="AI Resume Screener", layout="centered")
-st.title("🤖 AI Resume Screener")
+# UI
+st.title("AI Resume Screener")
 st.markdown("Upload your **PDF resume**, choose a Gemini model, and get AI-powered resume feedback and score.")
 
 uploaded_file = st.file_uploader("📄 Upload Resume PDF", type=["pdf"])
@@ -124,15 +121,13 @@ if uploaded_file is not None:
             analysis_result = analyze_resume(resume_text, selected_model)
 
         st.success("✅ Resume analyzed successfully!")
-        # Split output by numbered sections
+
+        # Display output with spacing
         sections = analysis_result.split("\n\n")
-
         st.markdown("Resume Review Output")
-
-for section in sections:
-    st.markdown(section.strip())
-    st.markdown("---")  # Divider line
-
+        for section in sections:
+            st.markdown(section.strip())
+            st.markdown(" ")
 
         # TXT Download
         with tempfile.NamedTemporaryFile(delete=False, suffix=".txt") as temp_file:
