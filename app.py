@@ -53,7 +53,7 @@ with st.container():
     model_list = get_supported_models()
     selected_model = st.selectbox("Select Gemini Model", model_list, index=model_list.index("models/gemini-1.5-flash"))
 
-    uploaded_file = st.file_uploader("📄 Upload Resume PDF", type=["pdf"])
+    uploaded_file = st.file_uploader("Upload Resume PDF", type=["pdf"])
     
 
     def extract_text_from_pdf(uploaded_file):
@@ -110,10 +110,10 @@ Resume:
 
     if uploaded_file is not None:
         try:
-            with st.spinner("📃 Reading your resume..."):
+            with st.spinner("Reading your resume..."):
                 resume_text = extract_text_from_pdf(uploaded_file)
 
-            with st.spinner(f"🧠 Analyzing with Gemini Model: `{selected_model}`..."):
+            with st.spinner(f"Analyzing with Gemini Model: `{selected_model}`..."):
                 analysis_result = analyze_resume(resume_text, selected_model)
 
             st.success("✅ Resume analyzed successfully!")
@@ -131,14 +131,14 @@ Resume:
 
             with open(temp_file_path, "rb") as file:
                 st.download_button(
-                    label="📥 Download as .txt",
+                    label="Download as .txt",
                     data=file,
                     file_name="AI_Resume_Review.txt",
                     mime="text/plain"
                 )
 
         except Exception as e:
-            st.error(f"❌ Error: {str(e)}")
+            st.error(f"Error: {str(e)}")
 
     else:
         st.info("📝 Please upload your resume in PDF format.")
