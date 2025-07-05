@@ -1,3 +1,39 @@
+
+# Streamlit Config
+st.set_page_config(page_title="AI Resume Screener", layout="centered")
+
+# Inject custom CSS for UI polishing
+st.markdown("""
+    <style>
+    .main {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 12px;
+    }
+    .stApp {
+        background: linear-gradient(to right, #f0f2f5, #ffffff);
+    }
+    h1 {
+        color: #333333;
+    }
+    .stTextInput, .stSelectbox, .stFileUploader {
+        border-radius: 8px !important;
+    }
+    .stButton > button {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    .stDownloadButton > button {
+        background-color: #2196F3;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 import streamlit as st
 import tempfile
 from PyPDF2 import PdfReader
@@ -88,7 +124,15 @@ if uploaded_file is not None:
             analysis_result = analyze_resume(resume_text, selected_model)
 
         st.success("✅ Resume analyzed successfully!")
-        st.text_area("📋 Resume Review Output", analysis_result, height=500)
+        # Split output by numbered sections
+        sections = analysis_result.split("\n\n")
+
+        st.markdown("Resume Review Output")
+
+for section in sections:
+    st.markdown(section.strip())
+    st.markdown("---")  # Divider line
+
 
         # TXT Download
         with tempfile.NamedTemporaryFile(delete=False, suffix=".txt") as temp_file:
